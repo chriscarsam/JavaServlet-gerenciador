@@ -9,4 +9,24 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>NuevaEmpresServlet</display-name>
+    <servlet-name>NuevaEmpresServlet</servlet-name>
+    <servlet-class>org.sam.gerenciador.servlet.NuevaEmpresServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NuevaEmpresServlet</servlet-name>
+    <url-pattern>/NuevaEmpresServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NuevaEmpresaServlet</display-name>
+    <servlet-name>NuevaEmpresaServlet</servlet-name>
+    <servlet-class>org.sam.gerenciador.servlet.NuevaEmpresaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NuevaEmpresaServlet</servlet-name>
+    <url-pattern>/nuevaEmpresa</url-pattern>
+  </servlet-mapping>
 </web-app>
