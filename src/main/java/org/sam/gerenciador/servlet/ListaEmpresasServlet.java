@@ -1,5 +1,6 @@
 package org.sam.gerenciador.servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,13 +16,12 @@ public class ListaEmpresasServlet extends HttpServlet {
 		
 		DB baseDeDatos = new DB();
 		List<Empresa> listaEmpresas = baseDeDatos.getEmpresas();
+	
+		request.setAttribute("empresas", listaEmpresas);
 		
-		PrintWriter out = response.getWriter();
-		out.print("<html><body>");
-		out.println("<ul>");
-		listaEmpresas.forEach(empresa -> out.println("<li>" + empresa.getNombre() + "</li>"));
-		out.println("</ul>");
-		out.print("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+		rd.forward(request, response);
+		
 	}
 
 }
