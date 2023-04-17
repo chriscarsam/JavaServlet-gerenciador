@@ -1,8 +1,3 @@
-<%
-	String empresa = (String)request.getAttribute("empresa");
-	System.out.println(empresa);
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Empresa <%=empresa%> registrada!
+	Empresa ${ empresa } registrada!
 </body>
 </html>
