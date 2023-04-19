@@ -14,6 +14,7 @@
 	 	<input type="text" name="nombre" id="nombre" value="${ empresa.nombre }"/>
 	 	<label for="fecha">Fecha abertura:</label>
 	 	<input type="text" name="fecha" id="fecha" value="<fmt:formatDate value="${ empresa.fechaAbertura }" pattern="dd/MM/yyyy"/>"/>
+	 	<input type="hidden" name="id" value="${ empresa.id }"  />
 	 	<input type="submit" value="Enviar" />
 	 	
 	</form>
