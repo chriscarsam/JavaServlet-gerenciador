@@ -41,4 +41,13 @@ public class DB {
 		}
 
 	}
+
+	public Empresa buscarEmpresaPorId(Integer id) {
+		for(Empresa empresa : listaEmpresas) {
+			if(empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		return null;
+	}
 }

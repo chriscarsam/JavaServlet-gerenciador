@@ -49,4 +49,14 @@
     <servlet-name>EliminarEmpresaServlet</servlet-name>
     <url-pattern>/eliminarEmpresa</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MostrarEmpresaServlet</display-name>
+    <servlet-name>MostrarEmpresaServlet</servlet-name>
+    <servlet-class>org.sam.gerenciador.servlet.MostrarEmpresaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostrarEmpresaServlet</servlet-name>
+    <url-pattern>/mostrarEmpresa</url-pattern>
+  </servlet-mapping>
 </web-app>
