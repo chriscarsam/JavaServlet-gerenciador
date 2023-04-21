@@ -1,12 +1,6 @@
-package org.sam.gerenciador.servlet;
+package org.sam.gerenciador.accion;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,11 +8,15 @@ import java.util.Date;
 import org.sam.gerenciador.modelo.DB;
 import org.sam.gerenciador.modelo.Empresa;
 
-public class NuevaEmpresaServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class NuevaEmpresa {
+
+	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		
 		System.out.println("nueva empresa registrada");
 		String nombreEmpresa = request.getParameter("nombre");
 		String paramFechaAbertura = request.getParameter("fecha");
@@ -40,12 +38,7 @@ public class NuevaEmpresaServlet extends HttpServlet {
 		DB baseDeDatos = new DB();
 		baseDeDatos.agregarEmpresa(empresa);
 		
-		response.sendRedirect("listaEmpresas");
-				
-		//llamar al jsp
-//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
-//		request.setAttribute("empresa", empresa.getNombre());
-//		rd.forward(request, response);
+		response.sendRedirect("entrada?accion=ListaEmpresas");
+		
 	}
-
 }

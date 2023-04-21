@@ -1,9 +1,5 @@
-package org.sam.gerenciador.servlet;
+package org.sam.gerenciador.accion;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,19 +8,21 @@ import java.util.Date;
 import org.sam.gerenciador.modelo.DB;
 import org.sam.gerenciador.modelo.Empresa;
 
-public class ModificarEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class ModificarEmpresa {
+
+	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
-		System.out.println("Empresa modificada");
 		String nombreEmpresa = request.getParameter("nombre");
 		String paramFechaAbertura = request.getParameter("fecha");
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		
-		System.out.println(id);
-		
+		System.out.println("Empresa modificada " + id);
+				
 		SimpleDateFormat sdf;
 		Date fechaAbertura;
 		try {
@@ -39,8 +37,8 @@ public class ModificarEmpresaServlet extends HttpServlet {
 		empresa.setNombre(nombreEmpresa);
 		empresa.setFechaAbertura(fechaAbertura);
 		
-		response.sendRedirect("listaEmpresas");
+		response.sendRedirect("entrada?accion=ListaEmpresas");
 		
 	}
-
+	
 }

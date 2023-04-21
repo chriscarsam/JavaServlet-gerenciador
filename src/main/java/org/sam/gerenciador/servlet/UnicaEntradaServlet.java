@@ -2,7 +2,11 @@ package org.sam.gerenciador.servlet;
 
 import java.io.IOException;
 
+import org.sam.gerenciador.accion.EliminarEmpresa;
 import org.sam.gerenciador.accion.ListaEmpresas;
+import org.sam.gerenciador.accion.ModificarEmpresa;
+import org.sam.gerenciador.accion.MostrarEmpresa;
+import org.sam.gerenciador.accion.NuevaEmpresa;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,10 +27,28 @@ public class UnicaEntradaServlet extends HttpServlet {
 			ListaEmpresas accion = new ListaEmpresas();
 			accion.ejecutar(request, response);
 			
+			System.out.println("Listar empresas");
+			
 		}else if(paramAccion.equals("MostrarEmpresa")) {
-			System.out.println("Mostrar una empresa");
-		}else if(paramAccion.equals("ElimnarEmpresa")) {
-			System.out.println("Elimnar una empresa");
+			
+			MostrarEmpresa accion = new MostrarEmpresa();
+			accion.ejecutar(request, response);
+			
+		}else if(paramAccion.equals("EliminarEmpresa")) {
+			
+			EliminarEmpresa accion = new EliminarEmpresa();
+			accion.ejecutar(request, response);
+			
+		}else if(paramAccion.equals("ModificarEmpresa")) {
+			
+			ModificarEmpresa accion = new ModificarEmpresa();
+			accion.ejecutar(request, response);
+			
+		}else if(paramAccion.equals("NuevaEmpresa")) {
+			
+			NuevaEmpresa accion = new NuevaEmpresa();
+			accion.ejecutar(request, response);
+			
 		}
 		
 	}
