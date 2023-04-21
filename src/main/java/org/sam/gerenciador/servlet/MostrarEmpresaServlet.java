@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.sam.gerenciador.modelo.DB;
+import org.sam.gerenciador.modelo.Empresa;
+
 /**
  * Servlet implementation class MostrarEmpresaServlet
  */

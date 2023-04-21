@@ -1,4 +1,4 @@
-package org.sam.gerenciador.servlet;
+package org.sam.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;

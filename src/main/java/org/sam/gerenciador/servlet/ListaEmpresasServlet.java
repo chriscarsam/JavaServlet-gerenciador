@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import org.sam.gerenciador.modelo.DB;
+import org.sam.gerenciador.modelo.Empresa;
+
 public class ListaEmpresasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

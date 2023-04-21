@@ -11,6 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.sam.gerenciador.modelo.DB;
+import org.sam.gerenciador.modelo.Empresa;
+
 public class NuevaEmpresaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
