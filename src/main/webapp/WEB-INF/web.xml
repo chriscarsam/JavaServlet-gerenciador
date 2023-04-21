@@ -5,12 +5,12 @@
     <welcome-file>bienvenido.html</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>HolaMundoServlet</servlet-name>
-  	<servlet-class>org.sam.gerenciador.servlet.HolaMundoServlet</servlet-class>
+    <servlet-name>HolaMundoServlet</servlet-name>
+    <servlet-class>org.sam.gerenciador.servlet.HolaMundoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>HolaMundoServlet</servlet-name>
-  	<url-pattern>/hello</url-pattern>
+    <servlet-name>HolaMundoServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -71,5 +71,5 @@
   <servlet-mapping>
     <servlet-name>ModificarEmpresaServlet</servlet-name>
     <url-pattern>/modificarEmpresa</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>  
 </web-app>
