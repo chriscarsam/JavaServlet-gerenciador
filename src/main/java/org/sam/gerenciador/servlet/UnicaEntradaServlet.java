@@ -7,6 +7,7 @@ import org.sam.gerenciador.accion.ListaEmpresas;
 import org.sam.gerenciador.accion.ModificarEmpresa;
 import org.sam.gerenciador.accion.MostrarEmpresa;
 import org.sam.gerenciador.accion.NuevaEmpresa;
+import org.sam.gerenciador.accion.NuevaEmpresaForm;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -51,12 +52,18 @@ public class UnicaEntradaServlet extends HttpServlet {
 			NuevaEmpresa accion = new NuevaEmpresa();
 			nombre = accion.ejecutar(request, response);
 			
+		}else if(paramAccion.equals("NuevaEmpresaForm")) {
+			
+			NuevaEmpresaForm accion = new NuevaEmpresaForm();
+			nombre = accion.ejecutar(request, response);
+			
 		}
+		
 		
 		String[] tipoYDireccion = nombre.split(":");
 		
 		if(tipoYDireccion[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(tipoYDireccion[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoYDireccion[1]);
 			rd.forward(request, response);			
 		} else {
 			response.sendRedirect(tipoYDireccion[1]);
