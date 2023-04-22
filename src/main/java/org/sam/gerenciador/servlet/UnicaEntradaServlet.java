@@ -2,12 +2,7 @@ package org.sam.gerenciador.servlet;
 
 import java.io.IOException;
 
-import org.sam.gerenciador.accion.EliminarEmpresa;
-import org.sam.gerenciador.accion.ListaEmpresas;
-import org.sam.gerenciador.accion.ModificarEmpresa;
-import org.sam.gerenciador.accion.MostrarEmpresa;
-import org.sam.gerenciador.accion.NuevaEmpresa;
-import org.sam.gerenciador.accion.NuevaEmpresaForm;
+import org.sam.gerenciador.accion.Accion;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -23,40 +18,16 @@ public class UnicaEntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAccion = request.getParameter("accion");
-		String nombre = null;
 		
-		if(paramAccion.equals("ListaEmpresas")) {
-			
-			ListaEmpresas accion = new ListaEmpresas();
+		String nombreDeClase = "org.sam.gerenciador.accion." + paramAccion;
+		String nombre;
+		try {
+			Class clase = Class.forName(nombreDeClase);
+			Accion accion = (Accion) clase.newInstance();
 			nombre = accion.ejecutar(request, response);
-			
-			System.out.println("Listar empresas");
-			
-		}else if(paramAccion.equals("MostrarEmpresa")) {
-			
-			MostrarEmpresa accion = new MostrarEmpresa();
-			nombre = accion.ejecutar(request, response);
-			
-		}else if(paramAccion.equals("EliminarEmpresa")) {
-			
-			EliminarEmpresa accion = new EliminarEmpresa();
-			nombre = accion.ejecutar(request, response);
-			
-		}else if(paramAccion.equals("ModificarEmpresa")) {
-			
-			ModificarEmpresa accion = new ModificarEmpresa();
-			nombre = accion.ejecutar(request, response);
-			
-		}else if(paramAccion.equals("NuevaEmpresa")) {
-			
-			NuevaEmpresa accion = new NuevaEmpresa();
-			nombre = accion.ejecutar(request, response);
-			
-		}else if(paramAccion.equals("NuevaEmpresaForm")) {
-			
-			NuevaEmpresaForm accion = new NuevaEmpresaForm();
-			nombre = accion.ejecutar(request, response);
-			
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | ServletException
+				| IOException e) {
+			throw new ServletException(e);
 		}
 		
 		
@@ -67,7 +38,8 @@ public class UnicaEntradaServlet extends HttpServlet {
 			rd.forward(request, response);			
 		} else {
 			response.sendRedirect(tipoYDireccion[1]);
-		}		
+		}	
+
 		
 	}
 
