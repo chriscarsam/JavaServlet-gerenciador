@@ -8,6 +8,7 @@ import org.sam.gerenciador.accion.ModificarEmpresa;
 import org.sam.gerenciador.accion.MostrarEmpresa;
 import org.sam.gerenciador.accion.NuevaEmpresa;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,11 +22,12 @@ public class UnicaEntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAccion = request.getParameter("accion");
+		String nombre = null;
 		
 		if(paramAccion.equals("ListaEmpresas")) {
 			
 			ListaEmpresas accion = new ListaEmpresas();
-			accion.ejecutar(request, response);
+			nombre = accion.ejecutar(request, response);
 			
 			System.out.println("Listar empresas");
 			
@@ -37,7 +39,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		}else if(paramAccion.equals("EliminarEmpresa")) {
 			
 			EliminarEmpresa accion = new EliminarEmpresa();
-			accion.ejecutar(request, response);
+			nombre = accion.ejecutar(request, response);
 			
 		}else if(paramAccion.equals("ModificarEmpresa")) {
 			
@@ -50,6 +52,15 @@ public class UnicaEntradaServlet extends HttpServlet {
 			accion.ejecutar(request, response);
 			
 		}
+		
+		String[] tipoYDireccion = nombre.split(":");
+		
+		if(tipoYDireccion[0].equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher(tipoYDireccion[1]);
+			rd.forward(request, response);			
+		} else {
+			response.sendRedirect(tipoYDireccion[1]);
+		}		
 		
 	}
 
