@@ -6,7 +6,6 @@ import java.util.List;
 import org.sam.gerenciador.modelo.DB;
 import org.sam.gerenciador.modelo.Empresa;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

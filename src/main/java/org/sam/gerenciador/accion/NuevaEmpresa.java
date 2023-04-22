@@ -8,14 +8,13 @@ import java.util.Date;
 import org.sam.gerenciador.modelo.DB;
 import org.sam.gerenciador.modelo.Empresa;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class NuevaEmpresa {
 
-	public void ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
 		System.out.println("nueva empresa registrada");
 		String nombreEmpresa = request.getParameter("nombre");
@@ -38,7 +37,7 @@ public class NuevaEmpresa {
 		DB baseDeDatos = new DB();
 		baseDeDatos.agregarEmpresa(empresa);
 		
-		response.sendRedirect("entrada?accion=ListaEmpresas");
+		return "redirect:entrada?accion=ListaEmpresas";
 		
 	}
 }
