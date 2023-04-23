@@ -2,6 +2,9 @@ package org.sam.gerenciador.accion;
 
 import java.io.IOException;
 
+import org.sam.gerenciador.modelo.DB;
+import org.sam.gerenciador.modelo.Usuario;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,12 +15,20 @@ public class Login implements Accion {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String paramUsuario = request.getParameter("usuario");
+		String paramLogin = request.getParameter("login");
 		String paramContrasenia = request.getParameter("contrasenia");
 		
-		System.out.println("Usuario: " + paramUsuario);		
+		System.out.println("Usuario: " + paramLogin);
 		
-		return "redirect:entrada?accion=ListaEmpresas";
+		DB db = new DB();
+		Usuario usuario = db.existeUsuario(paramLogin, paramContrasenia);
+		
+		if(usuario != null) {
+			System.out.println("Usuario existe");
+			return "redirect:entrada?accion=ListaEmpresas";
+		} else {
+			return "redirect:entrada?accion=LoginForm";
+		}	
 	}
 
 }

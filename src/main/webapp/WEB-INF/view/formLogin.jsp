@@ -8,8 +8,8 @@
 </head>
 <body>	
 	<form action="${linkEntradaServlet}" method="post">
-	 	<label for="usuario">Usuario:</label>
-	 	<input type="text" name="usuario" id="usuario"/>
+	 	<label for="login">Login:</label>
+	 	<input type="text" name="login" id="login"/>
 	 	<label for="contrasenia">Contraseña:</label>
 	 	<input type="password" name="contrasenia" id="contrasenia"/>
 	 	<input type="hidden" name="accion" value="Login" />

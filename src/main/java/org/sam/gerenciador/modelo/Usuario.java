@@ -19,10 +19,10 @@ public class Usuario {
 	}
 	
 	public boolean esIgual(String login, String contrasenia) {
-		if (this.login.equals(login)) {
+		if (!this.login.equals(login)) {
 			return false;
 		}
-		if(this.contrasenia.equals(contrasenia)) {
+		if(!this.contrasenia.equals(contrasenia)) {
 			return false;
 		}
 		return true;
