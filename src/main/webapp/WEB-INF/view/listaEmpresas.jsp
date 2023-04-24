@@ -11,6 +11,12 @@
 </head>
 <body>
 
+	Usuario logado: ${loginUsuario.login}
+	
+	<br>
+	<br>
+	<br>
+
 	<c:if test="${not empty empresa}">
 		Empresa ${ empresa } registrada! <br>
 	</c:if>
