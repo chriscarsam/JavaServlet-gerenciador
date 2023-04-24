@@ -13,12 +13,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class ListaEmpresas implements Accion{
 
-	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String ejecutar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginUsuario") == null) {
-			return "redirect:entrada?accion=LoginForm";
-		}
 		DB baseDeDatos = new DB();
 		List<Empresa> listaEmpresas = baseDeDatos.getEmpresas();
 	
