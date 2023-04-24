@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="logout-parcial.jsp"></c:import>
 	<c:if test="${not empty empresa}">
 		Empresa ${ empresa } registrada!
 	</c:if>
