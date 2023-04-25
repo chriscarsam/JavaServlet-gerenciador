@@ -19,7 +19,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAccion = request.getParameter("accion");		
-		HttpSession session = request.getSession();
+	/*	HttpSession session = request.getSession();
 		
 		Boolean esUnUsuarioNoLogado = (session.getAttribute("loginUsuario") == null);
 		Boolean esUnaAccionProtegida = !(paramAccion.equals("Login") || paramAccion.equals("LoginForm"));
@@ -27,7 +27,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		if (esUnUsuarioNoLogado && esUnaAccionProtegida) {
 			response.sendRedirect("entrada?accion=LoginForm");
 			return;
-		}		
+		}		*/
 		
 		String nombreDeClase = "org.sam.gerenciador.accion." + paramAccion;
 		String nombre;
