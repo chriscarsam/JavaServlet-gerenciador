@@ -9,7 +9,6 @@ import org.sam.gerenciador.modelo.Empresa;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 public class ListaEmpresas implements Accion{
 

@@ -4,28 +4,25 @@ import java.io.IOException;
 
 import org.sam.gerenciador.accion.Accion;
 
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-//@WebServlet(urlPatterns = "/entrada")
-public class UnicaEntradaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+//@WebFilter(urlPatterns = "/entrada")
+public class ControladorFilter implements Filter {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 		
-		String paramAccion = request.getParameter("accion");		
-	/*	HttpSession session = request.getSession();
+		System.out.println("ControladorFilter");
 		
-		Boolean esUnUsuarioNoLogado = (session.getAttribute("loginUsuario") == null);
-		Boolean esUnaAccionProtegida = !(paramAccion.equals("Login") || paramAccion.equals("LoginForm"));
-		
-		if (esUnUsuarioNoLogado && esUnaAccionProtegida) {
-			response.sendRedirect("entrada?accion=LoginForm");
-			return;
-		}		*/
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
+		String paramAccion = request.getParameter("accion");
 		
 		String nombreDeClase = "org.sam.gerenciador.accion." + paramAccion;
 		String nombre;
@@ -47,8 +44,6 @@ public class UnicaEntradaServlet extends HttpServlet {
 		} else {
 			response.sendRedirect(tipoYDireccion[1]);
 		}	
-
-		
 	}
 
 }

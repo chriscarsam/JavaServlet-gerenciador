@@ -7,9 +7,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns = "/entrada") // Si ya no quiero utilizar el filtro comento esta línea.
+//@WebFilter(urlPatterns = "/entrada") // Si ya no quiero utilizar el filtro comento esta línea.
 public class MonitoreoFilter implements Filter{
 
 	@Override
