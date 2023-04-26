@@ -22,18 +22,26 @@ public class EmpresasSevice extends HttpServlet {
 		
 		List<Empresa> empresas = new DB().getEmpresas();
 		
-		XStream xStream = new XStream();
-		xStream.alias("empresa", Empresa.class);
-		String xml = xStream.toXML(empresas);
+		String valor = request.getHeader("Accept");
 		
-		response.setContentType("Application/xml");
-		response.getWriter().print(xml);
+		if (valor.contains("xml")) {
+			XStream xStream = new XStream();
+			xStream.alias("empresa", Empresa.class);
+			String xml = xStream.toXML(empresas);
+			
+			response.setContentType("Application/xml");
+			response.getWriter().print(xml);			
+		} else if(valor.contains("json")) {
+			Gson gson = new Gson();
+			String json = gson.toJson(empresas);
+			
+			response.setContentType("Application/json");
+			response.getWriter().print(json);
+		} else {
+			response.setContentType("Application/json");
+			response.getWriter().print("{'message':'No content'}");
+		}
 		
-//		Gson gson = new Gson();
-//		String json = gson.toJson(empresas);
-//		
-//		response.setContentType("Application/json");
-//		response.getWriter().print(json);
 	}
 
 }
