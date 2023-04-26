@@ -12,6 +12,7 @@ import org.sam.gerenciador.modelo.DB;
 import org.sam.gerenciador.modelo.Empresa;
 
 import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
 
 @WebServlet("/empresas")
 public class EmpresasSevice extends HttpServlet {
@@ -21,11 +22,18 @@ public class EmpresasSevice extends HttpServlet {
 		
 		List<Empresa> empresas = new DB().getEmpresas();
 		
-		Gson gson = new Gson();
-		String json = gson.toJson(empresas);
+		XStream xStream = new XStream();
+		xStream.alias("empresa", Empresa.class);
+		String xml = xStream.toXML(empresas);
 		
-		response.setContentType("Application/json");
-		response.getWriter().print(json);
+		response.setContentType("Application/xml");
+		response.getWriter().print(xml);
+		
+//		Gson gson = new Gson();
+//		String json = gson.toJson(empresas);
+//		
+//		response.setContentType("Application/json");
+//		response.getWriter().print(json);
 	}
 
 }
